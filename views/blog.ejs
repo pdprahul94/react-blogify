@@ -1,0 +1,35 @@
+<%- include('./partials/head') %>
+<%- include('./partials/navbar') %>
+    <div class="container mt-4">
+                <h1 class="card-title"><%= blogs.title %></h1>
+                <img src="<%= blogs.coverImageURL  %>" class="card-img-top" alt="...">
+                <pre class="card-text"><%= blogs.body %></pre>
+    </div>
+    <div class="container mt-4">
+        <img src="<%= blogs.createdBy.profileImageURL %>" width="100" alt="">
+        <%= blogs.createdBy.fullName %>
+    </div>
+    <div class="container mt-4">
+        <h1>Comments (<%= comments.length %>)</h1>
+        
+        <form action="/blog/comment/<%= blogs._id %>" method="POST">
+            <div class="mb-3">
+                <label for="comment" class="form-label">Add a comment</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+        <div class="mt-3">
+            <% comments.forEach(comment => { %>
+                <div class="mb-3">
+                        <img src="<%= comment.createdBy.profileImageURL %>" width="50" alt="">
+                        <%= comment.createdBy.fullName %>
+                        <pre><%= comment.content %></pre>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+<%- include('./partials/scripts') %>
+<%- include('./partials/footer') %>
+

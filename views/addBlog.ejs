@@ -1,0 +1,21 @@
+<%- include('./partials/head') %>
+<%- include('./partials/navbar') %>
+    <div class="container">
+        <form action="/blog/add" method="POST" class="mt-5" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="title" aria-describedby="emailHelp">
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control"  id="floatingTextarea" name="body"></textarea>
+                <label for="Body">Body</label>
+            </div>
+            <div class="mb-3">
+                <label for="coverImage" class="form-label">Cover Image</label>
+                <input class="form-control" name="coverImage" type="file" id="coverImage">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+<%- include('./partials/scripts') %>
+<%- include('./partials/footer') %>
